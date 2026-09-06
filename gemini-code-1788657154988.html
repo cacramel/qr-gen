@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Center - Caramel Style</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Librărie pentru Scanner QR via Cameră -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>QR Code Center</h1>
+    
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('generator', event)">Generator QR</button>
+      <button class="tab-btn" onclick="switchTab('scanner', event)">Scanner QR</button>
+    </div>
+
+    <!-- GENERATOR -->
+    <div id="generator" class="tab-content active">
+      <div class="input-group">
+        <input type="text" id="qr-text" placeholder="Scrie un link sau un text aici..." />
+        <button onclick="generateQR()">Generează QR</button>
+      </div>
+
+      <div id="qr-result">
+        <div class="qr-wrapper">
+          <img id="qr-image" src="" alt="Cod QR" style="display: none;" />
+        </div>
+        <a id="download-link" href="" download="cod-qr.png" style="display: none;">
+          <button type="button" class="btn-secondary">Descarcă Imaginea QR</button>
+        </a>
+      </div>
+    </div>
+
+    <!-- SCANNER -->
+    <div id="scanner" class="tab-content">
+      <p class="info-text">Apasă pe buton pentru a porni camera:</p>
+      <button id="start-cam-btn" onclick="startScanner()">Pornește Camera</button>
+      <button id="stop-cam-btn" onclick="stopScanner()" style="display: none;">Oprește Camera</button>
+      
+      <div id="reader"></div>
+      <div id="scan-result">Rezultatul scanării va apărea aici...</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
